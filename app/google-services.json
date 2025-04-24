@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "874489431198",
+    "project_id": "guidemasters-5463e",
+    "storage_bucket": "guidemasters-5463e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:874489431198:android:4c99ad2000a60e2e3e278f",
+        "android_client_info": {
+          "package_name": "br.com.fiap.db1.guidemasters"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSsijGPNnxDCkERBifG8kN3T6D3V913c8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

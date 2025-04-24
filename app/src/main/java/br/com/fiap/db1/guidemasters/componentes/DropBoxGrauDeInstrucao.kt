@@ -1,0 +1,68 @@
+package br.com.fiap.db1.guidemasters.componentes
+
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowDropDown
+import androidx.compose.material3.DropdownMenu
+import androidx.compose.material3.DropdownMenuItem
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
+import br.com.fiap.db1.guidemasters.R
+
+@Composable
+fun DropBoxGrauDeInstrucao(
+    grausInstrucao: List<String>,
+    selectedGrauInstrucao: String,
+    onGrauInstrucaoSelected: (String) -> Unit,
+    isError: Boolean = false
+) {
+    var expanded by remember { mutableStateOf(false) }
+
+    Column {
+        Text(stringResource(id = R.string.grau_instrucao_dropbox))
+        Box(
+            modifier = Modifier.fillMaxWidth()
+        ) {
+            OutlinedTextField(
+                value = selectedGrauInstrucao,
+                onValueChange = { },
+                readOnly = true,
+                enabled = true,
+                modifier = Modifier.fillMaxWidth(),
+                trailingIcon = {
+                    IconButton(onClick = { expanded = true }) {
+                        Icon(Icons.Default.ArrowDropDown,
+                            contentDescription = stringResource(id = R.string.dropbox_content))
+                    }
+                }
+            )
+
+
+            DropdownMenu(
+                expanded = expanded,
+                onDismissRequest = { expanded = false }
+            ) {
+                grausInstrucao.forEach { grau ->
+                    if (!grau.isNullOrBlank()) {
+                        DropdownMenuItem(text = { Text(grau) }, onClick = {
+                            onGrauInstrucaoSelected(grau)
+                            expanded = false
+                        })
+                    }
+                }
+            }
+
+        }
+    }
+}
